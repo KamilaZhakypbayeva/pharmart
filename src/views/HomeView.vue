@@ -54,7 +54,6 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
  import SwiperCore, { Pagination } from "swiper";
- import {UploadMedia, UpdateMedia} from "@s1modev/media-upload";
   import 'swiper/css/pagination';
 
   
@@ -68,8 +67,7 @@ export default{
     Swiper,
     SwiperSlide,
     HeaderMain,
-    PopularCategories,
-    
+    PopularCategories
 }
 }
 </script>

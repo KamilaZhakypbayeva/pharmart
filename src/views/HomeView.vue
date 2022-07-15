@@ -1,52 +1,37 @@
 <template>
-
 <div class="conteiner">
-<upload-media
-    server="/api/upload"
-    error="@error('media'){{$message}}@enderror">
-</upload-media>
 <HeaderMain />
+    <div class="swipermain">
     <swiper     :pagination="{ clickable: true }"
                 :mousewheel="true"
                 class="slider">
     <swiper-slide :key="1">
-        <div class="slide1 row">
-            <div class="col">
-            
+            <div class="slide_col1">
+                <a class="slider1_p"><p>Что такое Lorem Ipsum?</p>
+                <p class="slider1_p2">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой"</p>
+                <a href="#"><button class="button_buy">Перейти</button></a></a>
             </div>
-            <div class="col">
-            
+            <div class="slide_col2">
+                <img src="./../assets/medicine_chest.png"/>
             </div>
-            <h1 class="slider1_h1">Что такое Lorem Ipsum?</h1>
-            <p class="slider1_p">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой"</p>
-            <img class="slider1_img" src="./../assets/Аптечка2.png"/>
-            <input name="button_buy" type="button" value="Перейти">
-        </div>
     </swiper-slide>
     <swiper-slide>
-        <div class="slide2">
-            <h1 class="slider2_h2">Что такое Lorem Ipsum?</h1>
-            <p class="slider2_p">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой"</p>
-            <img class="slider2_img" src="./../assets/medicine_things.png"/>
-            <input name="button_buy" type="button" value="Перейти">
-        </div>
+            <div class="slide_col1">
+                <a class="slider1_p"><p>Что такое Lorem Ipsum?</p>
+                <p class="slider1_p2">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой"</p>
+                <a href="#"><button class="button_buy">Перейти</button></a></a>
+            </div>
+            <div class="slide_col2">
+                <img src="./../assets/medicine_things.png"/>
+            </div>
     </swiper-slide>
     <swiper-slide>3</swiper-slide>
     </swiper>
-    <span class="slider_buttons">
-      <button @click="prepend()" class="goto1slide"></button>
-      <button @click="slideTo(2)" class="goto2slide"></button>
-      <button @click="slideTo(1)" class="goto3slide"></button>
-    </span>
-    <h2 class="popular_category">Популярные категории</h2>
+    </div>
+
     <PopularCategories/>
-    <h2 class="bestsellers">Хиты продаж</h2>
-    <update-media
-        server="/api/upload"
-        media_file_path="/post_images"
-        media_server="/api/media/{{$post->id}}"
-        error="@error('media'){{$message}}@enderror">
-  </update-media>
+    <span class="bestsellers"><p >Хиты продаж</p></span>
+    <BestSellers/>
 </div>
 </template>
 
@@ -60,6 +45,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
   import 'swiper/css'
   import HeaderMain from '../components/HeaderMain.vue'
   import PopularCategories from '../components/popularCategories.vue'
+  import BestSellers from '../components/BestSellers.vue'
   
 SwiperCore.use([Pagination]);
 export default{
@@ -67,100 +53,52 @@ export default{
     Swiper,
     SwiperSlide,
     HeaderMain,
-    PopularCategories
+    PopularCategories,
+    BestSellers
 }
 }
+
+
 </script>
 <style scoped>
 .conteiner{
     max-width: 1312px;
 }
-/*@media {max-width: 1312px;}{
-    .conteiner{
-        max-width: 970px;
-    }
-}*/
-.slider1{
-position: absolute;
-height: 460px;
-left: 64px;
-top: 162px;
-}
-.slider1_h1 {
-position: absolute;
-height: 58px;
-left: 118px;
-top: 274px;
-
-/* Header/H1 */
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 48px;
-line-height: 58px;
-/* identical to box height */
-
-
-/* Brand/Blue 700 */
-
-color: #157594;
-}
-.slider1_p {
-position: absolute;
-height: 48px;
-left: 151px;
-top: 346px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 24px;
-/* or 133% */
-/* Brand/Blue 700 */
-
-color: #157594;
+.swipermain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top:162px;
+    
 }
 
-
-input[name="button_buy"]{
-display: flex;
-flex-direction: row;
+.slide_col1{
+display: inline-block;
+flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 16px 32px;
-gap: 10px;
-
-position: absolute;
-height: 51px;
-left: 150px;
-top: 426px;
-
-/* Brand/Orange 500 */
-background: rgba(254, 131, 38, 1);
-border-radius: 8px;
+    &_text{
+text-decoration: none;
+color: #157594;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
-font-size: 16px;
-line-height: 19px;
-
-color: #FFFFFF;
+font-size: 24px;
+line-height: 24px;
+text-align: center;
+}
 }
 
 .slider{
-position: absolute;
-margin-top: 162px;
-margin-left: 64px;
 height: 460px;
-/* Brand/Banner linear */
+width:100%;
+left: 55px;
 background:  linear-gradient(120deg, #5AE1E1, #D4FCF2); 
 /* баннер */
-
 box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 border-radius: 20px;
-
 }
 /*.slide1 {
     background-image: url("../assets/Аптечка2.png");
@@ -169,7 +107,7 @@ border-radius: 20px;
     width: 482px;
     background-position:  left 180px ;
 }*/
-.slider1_h1 {
+.slider1_p {
 position: absolute;
 height: 58px;
 left: 53px;
@@ -189,13 +127,11 @@ line-height: 58px;
 
 color: #157594;
 }
-.slider1_p {
+.slider1_p2 {
 position: absolute;
 height: 48px;
-left: 85px;
-top: 190px;
-font-family: 'Inter';
-font-style: normal;
+left: 10px;
+top: 100px;
 font-weight: 500;
 font-size: 18px;
 line-height: 24px;
@@ -204,74 +140,15 @@ line-height: 24px;
 
 color: #157594;
 }
-.slider1_img {
-position: absolute;
-height: 279px;
-left: 760px;
-top: 65px;
-}
-
-
-.slider2_h2 {
-/* Что такое Lorem Ipsum? */
-
-
-position: absolute;
-height: 58px;
-left: 54px;
-top: 112px;
-
-/* Header/H1 */
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 48px;
-line-height: 58px;
-/* identical to box height */
-
-
-/* Brand/Blue 700 */
-
-color: #157594;
-}
-.slider2_p {
-position: absolute;
-height: 48px;
-left: 85px;
-top: 190px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 24px;
-/* or 133% */
-/* Brand/Blue 700 */
-
-color: #157594;
-}
-.slider2_img {
-position: absolute;
-height: 366px;
-width: 401px;
-left: 819px;
-top: 47px;
-border-radius: 0px;
-
-}
-
-input[name="button_buy"]{
-display: flex;
+.button_buy {
 flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 16px 32px;
-gap: 10px;
-
+top:200px;
 position: absolute;
 height: 51px;
-left: 88px;
-top: 280px;
+left: 10px;
 
 /* Brand/Orange 500 */
 background: rgba(254, 131, 38, 1);
@@ -284,7 +161,17 @@ line-height: 19px;
 border-color: rgba(254, 131, 38, 1); ;
 color: #FFFFFF;
 }
-
+.slide_col2{
+display: flex;
+flex-direction: column;
+justify-content: right;
+align-items: center;
+margin-left:680px;
+margin-top: 65px;
+    &img {
+        max-width: 100%;
+    }
+}
 .goto1slide {
 width: 45px;
 height: 5px;
@@ -339,27 +226,7 @@ order: 1;
 flex-grow: 0;
 border:0px;
 }
-.popular_category {
-position: absolute;
-width: 372px;
-height: 39px;
-left: 64px;
-top: 771px;
 
-/* Header/H2 */
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 32px;
-line-height: 39px;
-/* identical to box height */
-
-
-/* Text/Gray 500 */
-
-color: #2C3131;
-}
 .bestsellers{
 position: absolute;
 height: 39px;
